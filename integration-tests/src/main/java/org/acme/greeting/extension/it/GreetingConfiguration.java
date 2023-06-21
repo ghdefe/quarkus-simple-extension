@@ -3,7 +3,6 @@ package org.acme.greeting.extension.it;
 
 import io.quarkus.arc.DefaultBean;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
 import org.acme.greeting.extension.runtime.Foo;

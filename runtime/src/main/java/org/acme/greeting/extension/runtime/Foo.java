@@ -11,6 +11,10 @@ import jakarta.enterprise.context.RequestScoped;
 @ApplicationScoped
 public class Foo {
 
+    public Foo() {
+        System.out.println("Foo constructor be invoked!");
+    }
+
     int count = 0;
 
     public void hello() {

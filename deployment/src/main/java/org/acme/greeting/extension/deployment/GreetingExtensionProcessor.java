@@ -1,14 +1,15 @@
 package org.acme.greeting.extension.deployment;
 
 import io.quarkus.arc.deployment.*;
-import io.quarkus.deployment.annotations.BuildStep;
-import io.quarkus.deployment.annotations.ExecutionTime;
+import io.quarkus.deployment.annotations.*;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.undertow.deployment.ServletBuildItem;
 import org.acme.greeting.extension.runtime.Foo;
 import org.acme.greeting.extension.runtime.GreetingExtensionServlet;
 import org.acme.greeting.extension.runtime.HelloRecorder;
+
+import java.util.List;
 
 class GreetingExtensionProcessor {
 
