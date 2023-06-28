@@ -3,6 +3,7 @@ package org.acme.greeting.extension.deployment;
 import io.quarkus.arc.deployment.BeanDefiningAnnotationBuildItem;
 import io.quarkus.deployment.annotations.*;
 import io.quarkus.deployment.annotations.Record;
+import io.quarkus.deployment.builditem.ServiceStartBuildItem;
 import org.acme.greeting.extension.runtime.HelloRecorder;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class CustomBuildItemProcessor {
      * 如果对上一句话一头雾水, 先看下面的justPrint几个示例
      */
     @BuildStep
-    @Produce(BeanDefiningAnnotationBuildItem.class)
+    @Produce(ServiceStartBuildItem.class)
     void consumeMyBuildItem1(List<MyCustomBuildItem> items) {
         System.out.println("method invoked: consumeMyBuildItem1");
         printCustomBuildItems(items);
@@ -47,7 +48,7 @@ public class CustomBuildItemProcessor {
      */
     @BuildStep
     @Consume(MyCustomBuildItem.class)
-    @Produce(BeanDefiningAnnotationBuildItem.class)
+    @Produce(ServiceStartBuildItem.class)
     void consumeMyBuildItem2(){
         System.out.println("method invoked: consumeMyBuildItem2");
     }
@@ -97,7 +98,7 @@ public class CustomBuildItemProcessor {
      * 这里选择使用哪个BuildItem并无所谓，在这里只是确保编译器执行时会认为这个方法是有用的，所以只需要确保BeanDefiningAnnotationBuildItem会被消费, 而这个类是quarkus内置的, 所以在quarkus编译过程会被用到
      */
     @BuildStep
-    @Produce(BeanDefiningAnnotationBuildItem.class)
+    @Produce(ServiceStartBuildItem.class)
     void justPrint1() {
         System.out.println("method invoked: justPrint1");
     }
@@ -106,7 +107,7 @@ public class CustomBuildItemProcessor {
      * 被执行: 通过入参判断有产出
      */
     @BuildStep
-    void justPrint2(BuildProducer<BeanDefiningAnnotationBuildItem> producer) {
+    void justPrint2(BuildProducer<ServiceStartBuildItem> producer) {
         System.out.println("method invoked: justPrint2");
     }
 
